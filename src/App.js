@@ -1,9 +1,9 @@
-import NavBar from "./components/NavBar/NavBar";
+import Header from "./components/NavBar/Header";
 
 export default function App() {
   return (
     <div className="App">
-      <NavBar />
+      <Header />
     </div>
   );
 }

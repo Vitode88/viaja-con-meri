@@ -1,6 +1,13 @@
 const styles = {
   colors: {
-    main: "111111",
+    main: "#6A994E",
+    mainDark: "#386641",
+    mainLight: "#A7C957",
+    mainWhite: "#F2E8CF",
+    mainRed: "#F2E8CF",
+    almostBlack: "#222",
+    mediumBlack: "#333",
+    softBlack: "#555",
   },
 
   fontSizes: {

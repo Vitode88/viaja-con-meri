@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import styles from "../../styles/styles";
 
-const NavBarStyled = styled.div`
+const HeaderStyled = styled.div`
   body {
-    font-family: "Ysabeau", sans-serif;
+    font-family: "Niramit", sans-serif;
   }
 
   .head {
@@ -21,6 +21,14 @@ const NavBarStyled = styled.div`
     padding: 15px 40px 10px 15px;
     background-color: transparent;
     position: fixed;
+    transition: height 1s, background-color 0.6s;
+  }
+
+  .full-nav-colored {
+    height: 10vh;
+    padding: 10px 40px 10px 15px;
+    background-color: ${styles.colors.mainWhite};
+    transition: height 0.8s, background-color 1s, padding 0.8s;
   }
 
   .nav-logo {
@@ -31,12 +39,19 @@ const NavBarStyled = styled.div`
 
   .nav-menu {
     font-family: "Niramit", sans-serif;
-    font-size: ${styles.fontSizes.medium};
-    font-weight: bold;
+    font-size: ${styles.fontSizes.small};
+    font-weight: 500;
     color: white;
     display: flex;
     gap: 20px;
     margin: 0 60px 0 0;
+    list-style: none;
+  }
+
+  .nav-menu-colored {
+    color: ${styles.colors.softBlack};
+    font-weight: 500;
+    transition: color 0.5s;
   }
 
   .center-and-bottom-head {
@@ -49,7 +64,7 @@ const NavBarStyled = styled.div`
   }
 
   .logo-and-slogan-head {
-    height: 150px;
+    height: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +76,12 @@ const NavBarStyled = styled.div`
   }
 
   .head-slogan {
+    margin: 0.5em 0;
     color: white;
+    font-family: "Ysabeau", sans-serif;
+    font-size: 27px;
+    font-weight: 100;
+    font-style: italic;
   }
 
   //ARROW ANIMATION -----------------------------------------------
@@ -120,10 +140,10 @@ const NavBarStyled = styled.div`
 
     20.1%,
     100% {
-      border-color: #222;
+      border-color: #333;
     }
   }
   //ARROW ANIMATION ////-----------------------------------------------
 `;
 
-export default NavBarStyled;
+export default HeaderStyled;
