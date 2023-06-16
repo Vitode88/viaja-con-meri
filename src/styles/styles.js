@@ -4,7 +4,7 @@ const styles = {
     mainDark: "#386641",
     mainLight: "#A7C957",
     mainWhite: "#F2E8CF",
-    mainRed: "#F2E8CF",
+    mainRed: "#BC4749",
     almostBlack: "#222",
     mediumBlack: "#333",
     softBlack: "#555",

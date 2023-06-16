@@ -6,11 +6,13 @@ const HeaderStyled = styled.div`
     font-family: "Niramit", sans-serif;
   }
 
+  // HEAD ------------------------
   .head {
-    height: 800px;
+    height: 100vh;
     background-size: 100% 100%;
   }
 
+  // nav -----------
   .full-nav {
     height: 12vh;
     max-width: 100%;
@@ -18,7 +20,7 @@ const HeaderStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px 10px 15px;
+    padding: 15px 0 10px 15px;
     background-color: transparent;
     position: fixed;
     transition: height 1s, background-color 0.6s;
@@ -29,6 +31,7 @@ const HeaderStyled = styled.div`
     padding: 10px 40px 10px 15px;
     background-color: ${styles.colors.mainWhite};
     transition: height 0.8s, background-color 1s, padding 0.8s;
+    z-index: 2;
   }
 
   .nav-logo {
@@ -40,23 +43,26 @@ const HeaderStyled = styled.div`
   .nav-menu {
     font-family: "Niramit", sans-serif;
     font-size: ${styles.fontSizes.small};
-    font-weight: 500;
+    font-weight: 600;
     color: white;
     display: flex;
-    gap: 20px;
-    margin: 0 60px 0 0;
+    gap: 25px;
+    width: 40%;
+    margin: 0;
     list-style: none;
+    padding: 0;
   }
 
   .nav-menu-colored {
     color: ${styles.colors.softBlack};
-    font-weight: 500;
     transition: color 0.5s;
   }
 
+  // center and bottom head ------
+
   .center-and-bottom-head {
     padding-top: 15em;
-    height: 65vh;
+    height: 55vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,6 +97,7 @@ const HeaderStyled = styled.div`
     height: 75px;
     background: transparent;
     transform: rotate(45deg);
+    z-index: 1;
   }
 
   .arrow-indicator span {
@@ -144,6 +151,57 @@ const HeaderStyled = styled.div`
     }
   }
   //ARROW ANIMATION ////-----------------------------------------------
+
+  @media (max-width: 600px) {
+    .head {
+      height: 85vh;
+      width: 100vw;
+      background-size: cover;
+    }
+
+    .full-nav {
+      height: 8vh;
+      width: 100%;
+      padding: 10px 60px 10px 15px;
+      background-color: ${styles.colors.mainWhite};
+      transition: height 1s, background-color 0.6s;
+    }
+
+    .nav-logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .nav-menu {
+      font-size: 12px;
+      width: 100vw;
+      font-weight: 600;
+      color: ${styles.colors.softBlack};
+      align-items: center;
+      gap: 10px;
+      margin: 0 10px 0 0;
+      padding: 0 0 0 30px;
+    }
+
+    .center-and-bottom-head {
+      padding-top: 15em;
+      height: 55%;
+      width: 100vw;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .arrow-indicator {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      background: transparent;
+      transform: rotate(45deg);
+    }
+  }
 `;
 
 export default HeaderStyled;
