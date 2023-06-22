@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import ProximosViajesSection from "./components/ProximosViajesSection/ProximosViajesSection";
 import SobreMiArticle from "./components/SobreMiArticle/SobreMiArticle";
 import OfrecemosSection from "./components/OfrecemosSection/OfrecemosSection";
+import ResponsiveTravelSection from "./components/ResponsiveTravelSection/ResponsiveTravelSection";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <SobreMiArticle />
       <ProximosViajesSection />
       <OfrecemosSection />
+      <ResponsiveTravelSection />
     </div>
   );
 }
