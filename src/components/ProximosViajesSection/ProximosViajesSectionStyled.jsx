@@ -7,7 +7,7 @@ const ProximosViajesSectionStyled = styled.div`
   }
 
   .article-title {
-    padding: 100px 0 0 90px;
+    padding: 80px 0 0 90px;
     font-size: 40px;
     font-weight: 700;
   }
