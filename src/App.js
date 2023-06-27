@@ -4,6 +4,8 @@ import ProximosViajesSection from "./components/ProximosViajesSection/ProximosVi
 import SobreMiArticle from "./components/SobreMiArticle/SobreMiArticle";
 import OfrecemosSection from "./components/OfrecemosSection/OfrecemosSection";
 import ResponsiveTravelSection from "./components/ResponsiveTravelSection/ResponsiveTravelSection";
+import ContactUsSection from "./components/ContactUsSection/ContactUsSection";
+import Footer from "./components/Footer/Footer";
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
       <ProximosViajesSection />
       <OfrecemosSection />
       <ResponsiveTravelSection />
+      <ContactUsSection />
+      <Footer />
     </div>
   );
 }

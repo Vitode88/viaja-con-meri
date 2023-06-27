@@ -10,7 +10,7 @@ const OfrecemosCardsStyled = styled.div`
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: white;
+    background-color: rgba(240, 240, 240, 0.93);
     padding: 25px 25px;
     border-radius: 20px;
   }
