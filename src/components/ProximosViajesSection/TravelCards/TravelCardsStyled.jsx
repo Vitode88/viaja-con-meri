@@ -11,6 +11,14 @@ const TravelCardsStyled = styled.div`
     width: 350px;
     background-color: #f2e8cf;
     border-radius: 20px;
+    transition: 0.2s linear;
+  }
+
+  .full-card:hover {
+    height: 465px;
+    width: 360px;
+    box-shadow: 0px 0px 8px 5px #808080;
+    transition: 0.1s linear;
   }
 
   .card-img {
@@ -73,11 +81,18 @@ const TravelCardsStyled = styled.div`
     width: 40%;
     font-family: "Niramit", sans-serif;
     font-weight: bold;
-    background-color: #64b336;
+    background-color: #26b546;
     border: none;
     border-radius: 5px;
     font-size: 17px;
     padding: 9px 13px;
+    transition: 0.2s linear;
+  }
+
+  .card-button:hover {
+    cursor: pointer;
+    transition: 0.1s linear;
+    box-shadow: 0px 0px 8px 2px #166e29;
   }
 `;
 
