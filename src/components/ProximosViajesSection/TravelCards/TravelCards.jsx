@@ -1,7 +1,8 @@
 import TravelCardsStyled from "./TravelCardsStyled";
 import { setAvailabilityColor } from "../../../utils/functions";
 
-const TravelCards = ({ img, title, dates, availability }) => {
+const TravelCards = ({ img, name, dateFrom, dateTo, availability }) => {
+  console.log(availability);
   let availabilityObj = setAvailabilityColor(availability);
 
   return (
@@ -9,8 +10,12 @@ const TravelCards = ({ img, title, dates, availability }) => {
       <div className="full-card">
         <img src={img} alt="Greece Card" className="card-img" />
         <div className="card-information">
-          <p className="card-title">{title}</p>
-          <p className="card-dates">{dates}</p>
+          <p className="card-title">{name}</p>
+          <div className="dates">
+            <p className="card-dates">{dateFrom}</p>
+            <p className="card-dates">{dateTo}</p>
+          </div>
+
           <div className="card-available-places">
             <img
               src={availabilityObj.color}

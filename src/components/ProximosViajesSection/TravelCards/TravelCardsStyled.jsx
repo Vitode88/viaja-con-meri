@@ -44,7 +44,9 @@ const TravelCardsStyled = styled.div`
     font-weight: bold;
   }
 
-  .card-dates {
+  .dates {
+    display: flex;
+    gap: 1px;
     text-align: center;
     margin: 0 0 15px 0;
   }
