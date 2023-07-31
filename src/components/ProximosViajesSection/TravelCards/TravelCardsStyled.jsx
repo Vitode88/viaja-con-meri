@@ -30,7 +30,6 @@ const TravelCardsStyled = styled.div`
 
   .card-title {
     padding: 0 20%;
-
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -39,6 +38,10 @@ const TravelCardsStyled = styled.div`
   .card-dates {
     text-align: center;
     margin: 0 0 15px 0;
+  }
+
+  .card-dates {
+    margin: 0;
   }
 
   .card-available-places {

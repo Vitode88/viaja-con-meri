@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import styles from "../../styles/styles";
 
 const ProximosViajesSectionStyled = styled.div`
   .full-article {
@@ -7,7 +6,11 @@ const ProximosViajesSectionStyled = styled.div`
   }
 
   .article-title {
+<<<<<<< Updated upstream
     padding: 100px 0 0 90px;
+=======
+    padding: 60px 0 0 90px;
+>>>>>>> Stashed changes
     font-size: 40px;
     font-weight: 700;
   }
