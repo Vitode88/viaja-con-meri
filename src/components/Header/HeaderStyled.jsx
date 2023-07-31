@@ -53,6 +53,10 @@ const HeaderStyled = styled.div`
     padding: 0;
   }
 
+  .nav-menu-list-item:hover {
+    cursor: pointer;
+  }
+
   .nav-menu-colored {
     color: ${styles.colors.softBlack};
     transition: color 0.5s;
@@ -98,6 +102,10 @@ const HeaderStyled = styled.div`
     background: transparent;
     transform: rotate(45deg);
     z-index: 1;
+  }
+
+  .arrow-indicator:hover {
+    cursor: pointer;
   }
 
   .arrow-indicator span {
