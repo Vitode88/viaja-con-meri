@@ -1,8 +1,6 @@
 import ProximosViajesSectionStyled from "./ProximosViajesSectionStyled";
 import TravelCards from "./TravelCards/TravelCards";
 import goldBackground from "../../img/goldBackground2.jpeg";
-import GreeceCard from "../../img/GreeceCard.jpg";
-import VeniceCard from "../../img/VeniceCard.jpeg";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -14,9 +12,8 @@ const ProximosViajesSection = () => {
       try {
         const tripUrl = await axios.get("http://localhost:4000/trips/");
         setTrips(tripUrl.data.trips);
-        console.log(tripUrl.data.trips);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 
@@ -43,6 +40,7 @@ const ProximosViajesSection = () => {
                   name={trip.name}
                   dateFrom={trip.dateFrom}
                   dateTo={trip.dateTo}
+                  image={trip.image}
                   availability={trip.availability}
                   country={trip.country}
                   description={trip.description}
