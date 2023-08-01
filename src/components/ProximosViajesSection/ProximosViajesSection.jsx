@@ -3,9 +3,14 @@ import TravelCards from "./TravelCards/TravelCards";
 import goldBackground from "../../img/goldBackground2.jpeg";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import useTrip from "../../hooks/useTrip";
 
-const ProximosViajesSection = ({ isEditable }) => {
+const ProximosViajesSection = ({ isEditable, deleteTrip }) => {
   const [trips, setTrips] = useState();
+  const [openModal, setOpenModal] = useState(false);
+  const [tripDeleted, setTripDeleted] = useState();
+
+  const { trip } = useTrip();
 
   useEffect(() => {
     const tripsRequest = async () => {
@@ -42,7 +47,12 @@ const ProximosViajesSection = ({ isEditable }) => {
           {trips ? (
             trips.map((trip, index) => {
               return isEditable ? (
-                <TravelCards key={index} trip={trip} isEditable={true} />
+                <TravelCards
+                  key={index}
+                  trip={trip}
+                  isEditable={true}
+                  setOpenModal={setOpenModal}
+                />
               ) : (
                 <TravelCards key={index} trip={trip} isEditable={false} />
               );

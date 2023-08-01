@@ -1,12 +1,13 @@
-import EditTripsStyled from "./CreateTripsStyled";
+import EditTripsStyled from "./CompleteTripsStyled";
 import { useState } from "react";
 import axios from "axios";
 import imageCompression from "browser-image-compression";
 import { convertBase64 } from "../../utils/fileHandler";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import useTrip from "../../hooks/useTrip";
 
-const CreateTrips = () => {
+const CompleteTrips = () => {
   const formDataInitialState = {
     name: "",
     dateFrom: "",
@@ -19,9 +20,13 @@ const CreateTrips = () => {
   };
 
   const navigate = useNavigate();
-  const [formData, setFormData] = useState(formDataInitialState);
+
+  const { trip } = useTrip();
+
+  const [formData, setFormData] = useState(trip ? trip : formDataInitialState);
   const [loading, setLoading] = useState(false);
   const [tripCreated, setTripCreated] = useState();
+  const [tripEdited, setTripEdited] = useState();
 
   async function upload(event) {
     const imageFile = event.target.files[0];
@@ -47,8 +52,6 @@ const CreateTrips = () => {
     e.preventDefault();
 
     try {
-      console.log(formData);
-
       await axios({
         method: "post",
         url: "http://localhost:4000/trips/create",
@@ -58,6 +61,27 @@ const CreateTrips = () => {
     } catch (error) {
       console.error(error);
       setTripCreated(false);
+    }
+
+    setFormData(formDataInitialState);
+    setLoading(false);
+  };
+
+  const tripEdit = async (e) => {
+    e.preventDefault();
+
+    try {
+      console.log(formData);
+
+      await axios({
+        method: "put",
+        url: `http://localhost:4000/trips/${trip.id}`,
+        data: formData,
+      });
+      setTripEdited(true);
+    } catch (error) {
+      console.error(error);
+      setTripEdited(false);
     }
 
     setFormData(formDataInitialState);
@@ -176,20 +200,42 @@ const CreateTrips = () => {
               value={formData.practicalInformation}
             ></textarea>
           </label>
-          <button
-            className="button"
-            onClick={(e) => {
-              tripCreate(e);
-            }}
-          >
-            CREAR VIAJE
-          </button>
+          {trip ? (
+            <button
+              className="button"
+              onClick={(e) => {
+                tripEdit(e);
+              }}
+            >
+              MODIFICAR VIAJE
+            </button>
+          ) : (
+            <button
+              className="button"
+              onClick={(e) => {
+                tripCreate(e);
+              }}
+            >
+              CREAR VIAJE
+            </button>
+          )}
+
           {tripCreated && (
             <p className="trip-created-text">¡Viaje creado correctamente!</p>
+          )}
+          {tripEdited && (
+            <p className="trip-created-text">
+              ¡Viaje modificado correctamente!
+            </p>
           )}
           {tripCreated === false && (
             <p className="trip-not-created-text">
               No se ha podido crear el viaje
+            </p>
+          )}
+          {tripEdited === false && (
+            <p className="trip-not-created-text">
+              No se ha podido editar el viaje
             </p>
           )}
         </form>
@@ -198,4 +244,4 @@ const CreateTrips = () => {
   );
 };
 
-export default CreateTrips;
+export default CompleteTrips;
