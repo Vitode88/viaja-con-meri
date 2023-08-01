@@ -34,6 +34,7 @@ const TravelCardsStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
   }
 
   .card-title {
@@ -41,17 +42,17 @@ const TravelCardsStyled = styled.div`
     text-align: center;
     font-size: 20px;
     font-weight: bold;
+    margin: 20px 0;
   }
 
   .dates {
     display: flex;
     gap: 1px;
     text-align: center;
-    margin: 0 0 15px 0;
   }
 
   .card-dates {
-    margin: 0;
+    margin: 0 0 15px 0;
   }
 
   .card-available-places {
@@ -98,6 +99,48 @@ const TravelCardsStyled = styled.div`
     cursor: pointer;
     transition: 0.1s linear;
     box-shadow: 0px 0px 8px 2px #166e29;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .button-button {
+    width: 25%;
+    font-family: "Niramit", sans-serif;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 5px 5px;
+    transition: 0.2s linear;
+  }
+  .button-button:hover {
+    cursor: pointer;
+    transition: 0.08s linear;
+  }
+
+  .watch-button {
+    background-color: #26b54a;
+  }
+  .watch-button:hover {
+    box-shadow: 0px 0px 4px 2px #166e2c;
+  }
+  .edit-button {
+    background-color: #2685b5;
+  }
+  .edit-button:hover {
+    box-shadow: 0px 0px 4px 2px #16406e;
+  }
+
+  .delete-button {
+    background-color: #b52634;
+  }
+  .delete-button:hover {
+    box-shadow: 0px 0px 4px 2px #6e1616;
   }
 `;
 

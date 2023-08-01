@@ -4,7 +4,7 @@ import goldBackground from "../../img/goldBackground2.jpeg";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const ProximosViajesSection = () => {
+const ProximosViajesSection = ({ isEditable }) => {
   const [trips, setTrips] = useState();
 
   useEffect(() => {
@@ -30,23 +30,21 @@ const ProximosViajesSection = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className="article-title">PRÓXIMOS VIAJES EN GRUPO:</div>
+        {isEditable ? (
+          <div className="article-title">
+            Selecciona un viaje para editar o eliminar
+          </div>
+        ) : (
+          <div className="article-title">PRÓXIMOS VIAJES EN GRUPO:</div>
+        )}
+
         <div className="cards-section">
           {trips ? (
             trips.map((trip, index) => {
-              return (
-                <TravelCards
-                  key={index}
-                  name={trip.name}
-                  dateFrom={trip.dateFrom}
-                  dateTo={trip.dateTo}
-                  image={trip.image}
-                  availability={trip.availability}
-                  country={trip.country}
-                  description={trip.description}
-                  practicalInformation={trip.practicalInformation}
-                  id={trip.id}
-                />
+              return isEditable ? (
+                <TravelCards key={index} trip={trip} isEditable={true} />
+              ) : (
+                <TravelCards key={index} trip={trip} isEditable={false} />
               );
             })
           ) : (
