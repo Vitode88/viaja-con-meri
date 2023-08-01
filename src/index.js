@@ -15,11 +15,17 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" Component={App} />
-        <Route path="/proximos-viajes" Component={ProximosViajesSection} />
+        <Route
+          path="/proximos-viajes"
+          element={<ProximosViajesSection isEditable={false} />}
+        />
         <Route path="/lobby" Component={LobbyComponent} />
         <Route path="/lobby-redirection" Component={RedirectionComponent} />
         <Route path="/create-trip" Component={EditTrips} />
-        <Route path="/read-trip" Component={ProximosViajesSection} />
+        <Route
+          path="/read-trip"
+          element={<ProximosViajesSection isEditable={true} />}
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
