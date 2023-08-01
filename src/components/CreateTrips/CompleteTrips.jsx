@@ -19,12 +19,14 @@ const CompleteTrips = () => {
     practicalInformation: "",
   };
 
+  const navigate = useNavigate();
+
   const { trip } = useTrip();
 
-  const navigate = useNavigate();
   const [formData, setFormData] = useState(trip ? trip : formDataInitialState);
   const [loading, setLoading] = useState(false);
   const [tripCreated, setTripCreated] = useState();
+  const [tripEdited, setTripEdited] = useState();
 
   async function upload(event) {
     const imageFile = event.target.files[0];
@@ -50,8 +52,6 @@ const CompleteTrips = () => {
     e.preventDefault();
 
     try {
-      console.log(formData);
-
       await axios({
         method: "post",
         url: "http://localhost:4000/trips/create",
@@ -61,6 +61,27 @@ const CompleteTrips = () => {
     } catch (error) {
       console.error(error);
       setTripCreated(false);
+    }
+
+    setFormData(formDataInitialState);
+    setLoading(false);
+  };
+
+  const tripEdit = async (e) => {
+    e.preventDefault();
+
+    try {
+      console.log(formData);
+
+      await axios({
+        method: "put",
+        url: `http://localhost:4000/trips/${trip.id}`,
+        data: formData,
+      });
+      setTripEdited(true);
+    } catch (error) {
+      console.error(error);
+      setTripEdited(false);
     }
 
     setFormData(formDataInitialState);
@@ -183,7 +204,7 @@ const CompleteTrips = () => {
             <button
               className="button"
               onClick={(e) => {
-                tripCreate(e);
+                tripEdit(e);
               }}
             >
               MODIFICAR VIAJE
@@ -202,9 +223,19 @@ const CompleteTrips = () => {
           {tripCreated && (
             <p className="trip-created-text">¡Viaje creado correctamente!</p>
           )}
+          {tripEdited && (
+            <p className="trip-created-text">
+              ¡Viaje modificado correctamente!
+            </p>
+          )}
           {tripCreated === false && (
             <p className="trip-not-created-text">
               No se ha podido crear el viaje
+            </p>
+          )}
+          {tripEdited === false && (
+            <p className="trip-not-created-text">
+              No se ha podido editar el viaje
             </p>
           )}
         </form>

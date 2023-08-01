@@ -3,12 +3,17 @@ import { setAvailabilityColor } from "../../../utils/functions";
 import useTrip from "../../../hooks/useTrip";
 import { useNavigate } from "react-router-dom";
 
-const TravelCards = ({ trip, isEditable }) => {
+const TravelCards = ({ trip, isEditable, setOpenModal }) => {
   const navigate = useNavigate();
   const { setTrip } = useTrip();
   const editTrip = () => {
     setTrip(trip);
     navigate("/complete-trip");
+  };
+
+  const deleteTrip = () => {
+    setOpenModal(true);
+    setTrip(trip);
   };
 
   let availabilityObj = setAvailabilityColor(trip.availability);
@@ -50,7 +55,12 @@ const TravelCards = ({ trip, isEditable }) => {
               >
                 EDITAR
               </button>
-              <button className="delete-button button-button">ELIMINAR</button>
+              <button
+                className="delete-button button-button"
+                onClick={() => deleteTrip()}
+              >
+                ELIMINAR
+              </button>
             </div>
           ) : (
             <button className="card-button">VER VIAJE</button>
