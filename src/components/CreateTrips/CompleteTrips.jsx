@@ -1,12 +1,13 @@
-import EditTripsStyled from "./CreateTripsStyled";
+import EditTripsStyled from "./CompleteTripsStyled";
 import { useState } from "react";
 import axios from "axios";
 import imageCompression from "browser-image-compression";
 import { convertBase64 } from "../../utils/fileHandler";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import useTrip from "../../hooks/useTrip";
 
-const CreateTrips = () => {
+const CompleteTrips = () => {
   const formDataInitialState = {
     name: "",
     dateFrom: "",
@@ -18,8 +19,10 @@ const CreateTrips = () => {
     practicalInformation: "",
   };
 
+  const { trip } = useTrip();
+
   const navigate = useNavigate();
-  const [formData, setFormData] = useState(formDataInitialState);
+  const [formData, setFormData] = useState(trip ? trip : formDataInitialState);
   const [loading, setLoading] = useState(false);
   const [tripCreated, setTripCreated] = useState();
 
@@ -176,14 +179,26 @@ const CreateTrips = () => {
               value={formData.practicalInformation}
             ></textarea>
           </label>
-          <button
-            className="button"
-            onClick={(e) => {
-              tripCreate(e);
-            }}
-          >
-            CREAR VIAJE
-          </button>
+          {trip ? (
+            <button
+              className="button"
+              onClick={(e) => {
+                tripCreate(e);
+              }}
+            >
+              MODIFICAR VIAJE
+            </button>
+          ) : (
+            <button
+              className="button"
+              onClick={(e) => {
+                tripCreate(e);
+              }}
+            >
+              CREAR VIAJE
+            </button>
+          )}
+
           {tripCreated && (
             <p className="trip-created-text">¡Viaje creado correctamente!</p>
           )}
@@ -198,4 +213,4 @@ const CreateTrips = () => {
   );
 };
 
-export default CreateTrips;
+export default CompleteTrips;

@@ -7,7 +7,7 @@ const RedirectionComponent = () => {
 
   function accesCreateTrip(e) {
     e.preventDefault();
-    navigate("/create-trip");
+    navigate("/complete-trip");
   }
 
   function accesReadTrip(e) {
