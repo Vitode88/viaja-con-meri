@@ -1,15 +1,19 @@
-import LobbyComponentStyled from "./LobbyComponentStyled";
+import LobbyStyled from "./LobbyStyled";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
-const LobbyComponent = () => {
+const Lobby = () => {
   const [accesPassword, setAccesPassword] = useState();
   const navigate = useNavigate();
+  const { setAuthed } = useAuth();
 
   function accesTrip(e) {
     e.preventDefault();
 
     if (accesPassword === "Merite00") {
+      localStorage.setItem("authed", true);
+      setAuthed(true);
       navigate("/lobby-redirection");
     } else {
       alert("La contraseña no es correcta");
@@ -17,7 +21,7 @@ const LobbyComponent = () => {
   }
 
   return (
-    <LobbyComponentStyled>
+    <LobbyStyled>
       <div className="full-component">
         <div className="comands">
           <p>
@@ -35,8 +39,8 @@ const LobbyComponent = () => {
           </button>
         </form>
       </div>
-    </LobbyComponentStyled>
+    </LobbyStyled>
   );
 };
 
-export default LobbyComponent;
+export default Lobby;

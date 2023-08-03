@@ -1,5 +1,5 @@
 import EditTripsStyled from "./CompleteTripsStyled";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import imageCompression from "browser-image-compression";
 import { convertBase64 } from "../../utils/fileHandler";
@@ -27,6 +27,13 @@ const CompleteTrips = () => {
   const [loading, setLoading] = useState(false);
   const [tripCreated, setTripCreated] = useState();
   const [tripEdited, setTripEdited] = useState();
+
+  useEffect(() => {
+    if (tripCreated === true) {
+      setFormData(formDataInitialState);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tripCreated]);
 
   async function upload(event) {
     const imageFile = event.target.files[0];
@@ -63,7 +70,6 @@ const CompleteTrips = () => {
       setTripCreated(false);
     }
 
-    setFormData(formDataInitialState);
     setLoading(false);
   };
 
@@ -90,6 +96,7 @@ const CompleteTrips = () => {
 
   const goBack = () => {
     navigate("/lobby-redirection");
+    window.location.reload();
   };
 
   return (
@@ -99,6 +106,7 @@ const CompleteTrips = () => {
           className="back-button"
           onClick={() => {
             goBack();
+            setFormData(formDataInitialState);
           }}
         >
           ⬅️ VOLVER
