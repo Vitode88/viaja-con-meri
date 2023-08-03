@@ -6,7 +6,7 @@ import OfrecemosSection from "./components/OfrecemosSection/OfrecemosSection";
 import ResponsiveTravelSection from "./components/ResponsiveTravelSection/ResponsiveTravelSection";
 import ContactUsSection from "./components/ContactUsSection/ContactUsSection";
 import Footer from "./components/Footer/Footer";
-import LobbyComponent from "./components/LobbyComponent/LobbyComponent";
+import Lobby from "./components/Lobby/Lobby";
 
 export default function App() {
   return (

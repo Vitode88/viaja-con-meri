@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import styles from "../../styles/styles";
 
-const LobbyComponentStyled = styled.div`
+const LobbyStyled = styled.div`
   .full-component {
     padding: 80px 0;
     display: flex;
@@ -44,4 +44,4 @@ const LobbyComponentStyled = styled.div`
   }
 `;
 
-export default LobbyComponentStyled;
+export default LobbyStyled;

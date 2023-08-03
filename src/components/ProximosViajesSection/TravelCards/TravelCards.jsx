@@ -2,19 +2,25 @@ import TravelCardsStyled from "./TravelCardsStyled";
 import { setAvailabilityColor } from "../../../utils/functions";
 import useTrip from "../../../hooks/useTrip";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import ModalDelete from "../../ModalDelete/ModalDelete";
 
-const TravelCards = ({ trip, isEditable, setOpenModal }) => {
+const TravelCards = ({ trip, isEditable }) => {
   const navigate = useNavigate();
   const { setTrip } = useTrip();
+
+  const [openModal, setOpenModal] = useState(false);
+
   const editTrip = () => {
     setTrip(trip);
     navigate("/complete-trip");
   };
 
-  const deleteTrip = () => {
+  /* const deleteTrip = () => {
     setOpenModal(true);
     setTrip(trip);
-  };
+  }; */
 
   let availabilityObj = setAvailabilityColor(trip.availability);
 
@@ -28,8 +34,28 @@ const TravelCards = ({ trip, isEditable, setOpenModal }) => {
   let monthTo = dateToString.getMonth();
   let yearTo = dateToString.getFullYear();
 
+  const tripDelete = async () => {
+    try {
+      await axios({
+        method: "delete",
+        url: `http://localhost:4000/trips/${trip.id}`,
+      });
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <TravelCardsStyled>
+      {openModal ? (
+        <ModalDelete
+          closeModalFunction={setOpenModal}
+          deleteFunction={tripDelete}
+        />
+      ) : (
+        <></>
+      )}
       <div className="full-card">
         <img src={trip.image} alt="Greece Card" className="card-img" />
         <div className="card-information">
@@ -57,7 +83,7 @@ const TravelCards = ({ trip, isEditable, setOpenModal }) => {
               </button>
               <button
                 className="delete-button button-button"
-                onClick={() => deleteTrip()}
+                onClick={() => setOpenModal(true)}
               >
                 ELIMINAR
               </button>
